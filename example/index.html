@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>example for web components</title>
+</head>
+<body>
+    <wc-element>Button</wc-element>
+    <script module>
+        class WcElement extends HTMLElement{
+            constructor(){
+                super();
+                this.addEventListener('click', e => {
+                    this.toggleCard();
+                });
+            }
+
+            toggleCard() {
+                console.log("Element was clicked!");
+            }
+        }
+        customElements.define('wc-element', WcElement);
+    </script>
+</body>
+</html>

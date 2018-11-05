@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>shadedom</title>
+</head>
+<body>
+    <div class="menus">
+        <h2>Menus</h2>
+        <slot></slot>
+    </div>
+    <script>
+        var menus = document.querySelector('.menus');
+        var shadowRoot = menus.attachShadow({mode: 'open'});
+        shadowRoot.innerHTML = '<ul>\
+            <li>Home</li>\
+            <li>About</li>\
+        </ul>';
+    </script>
+</body>
+</html>
