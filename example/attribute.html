@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>example for web components</title>
+</head>
+
+<body>
+  <my-button label="Click Me"></my-button>
+  <my-label></my-label>
+  <template id="my-button">
+    <a href="javascript:;"></a>
+  </template>
+  <template id="my-label">
+    <span>Count :</span>
+    <span class="num">0</span>
+  </template>
+  <script module>
+    class myButton extends HTMLElement {
+      constructor() {
+        super();
+
+        this._shadowRoot = this.attachShadow({ mode: 'open' });
+        this.label = this.getAttribute('label');
+        this.count = 0;
+        this.render();
+        this.addEventListener('click', e => {
+          this.toggleCard();
+        });
+      }
+
+      render() {
+        var template = document.getElementById('my-button');
+        var content = template.content.cloneNode(true);
+        content.querySelector('a').innerText = this.label;
+        this._shadowRoot.appendChild(content);
+      }
+
+      toggleCard() {
+        document.querySelector('my-label').setAttribute('num', ++this.count)
+      }
+    }
+
+    customElements.define('my-button', myButton);
+
+    class myLabel extends HTMLElement {
+      constructor() {
+        super();
+
+        this._shadowRoot = this.attachShadow({ mode: 'open' });
+        var template = document.getElementById('my-label');
+        var content = template.content.cloneNode(true);
+        this._shadowRoot.appendChild(content);
+      }
+
+      static get observedAttributes() {
+        return ['num'];
+      }
+
+      attributeChangedCallback(name, oldVal, newVal) {
+        this._shadowRoot.querySelector('.num').innerText = newVal;
+      }
+    }
+
+    customElements.define('my-label', myLabel);
+
+  </script>
+</body>
+
+</html>

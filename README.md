@@ -6,6 +6,14 @@
 
 Here are some examples for learning webcomponents.
 
+
+## shadowdom
+
+其实，在创建web components的同时，可以不构建shadow dom。如
+
+
+
+
 ### License
 
 [MIT](https://github.com/brandonxiang/example-webcomponents/blob/master/LICENSE)@Brandonxiang
