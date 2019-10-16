@@ -4,18 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>shadedom</title>
+    <title>shadowdom</title>
 </head>
 <body>
-    <div class="menus">
+    <div id="menus1">
     </div>
+
+    <div id="menus2">
+    </div>
+
     <script>
-        var menus = document.querySelector('.menus');
-        var shadowRoot = menus.attachShadow({mode: 'open'});
-        shadowRoot.innerHTML = '<ul>\
-            <li>Home</li>\
-            <li>About</li>\
+        var menus1 = document.querySelector('#menus1');
+        var shadowRoot1 = menus1.attachShadow({mode: 'open'});
+        shadowRoot1.innerHTML = '<ul>\
+            <li>Home1</li>\
+            <li>About1</li>\
         </ul>';
+        console.log(menus1.shadowRoot.querySelector('li'));
+
+        
+
+        var menus2 = document.querySelector('#menus2');
+        var shadowRoot2 = menus2.attachShadow({mode: 'closed'});
+        shadowRoot2.innerHTML = '<ul>\
+            <li>Home2</li>\
+            <li>About2</li>\
+        </ul>';
+        console.log(menus2.shadowRoot);
     </script>
 </body>
 </html>
