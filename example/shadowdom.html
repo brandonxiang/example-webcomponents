@@ -13,6 +13,12 @@
     <div id="menus2">
     </div>
 
+    <my-menus>
+    </my-menus>
+
+    <shadow-menus>
+    </shadow-menus>
+
     <script>
         var menus1 = document.querySelector('#menus1');
         var shadowRoot1 = menus1.attachShadow({mode: 'open'});
@@ -31,6 +37,30 @@
             <li>About2</li>\
         </ul>';
         console.log(menus2.shadowRoot);
+
+        class Menu3 extends HTMLElement {
+            constructor(){
+                super();
+                this.innerHTML = '<ul>\
+                    <li>Home3</li>\
+                    <li>About3</li>\
+                </ul>';
+            }
+        }
+        customElements.define('my-menus', Menu3);
+
+        class Menu4 extends HTMLElement {
+            constructor(){
+                super();
+                var shadow= this.attachShadow({ mode: 'open' });
+                this.innerHTML = '<ul>\
+                    <li>Home4</li>\
+                    <li>About4</li>\
+                </ul>';
+            }
+        }
+        customElements.define('shadow-menus', Menu4);
+        
     </script>
 </body>
 </html>
